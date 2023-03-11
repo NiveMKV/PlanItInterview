@@ -19,7 +19,7 @@ namespace PlanItTestProject.Tests
             pageFactory.VerifyHomePageIsLoaded();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void AfterTest()
         {
             pageFactory.CloseDriver();
