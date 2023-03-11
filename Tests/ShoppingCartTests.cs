@@ -45,21 +45,22 @@ namespace PlanItTestProject.Tests
             }
 
             //verify the price and subtotal of each product added to the cart.
+            pageFactory.homePage.ClickCartMenu();
             decimal TotalOfSubTotal = 0;
             foreach (KeyValuePair<string, decimal> productPriceDetail in ProductPriceDetails)
             {
-                decimal pdtPriceInTable = pageFactory.shopPage.GetPriceOfProductInCheckoutTable(productPriceDetail.Key);
+                decimal pdtPriceInTable = pageFactory.cartPage.GetPriceOfProductInCheckoutTable(productPriceDetail.Key);
                 Assert.That(pdtPriceInTable.Equals(productPriceDetail.Value), "The price of the product in the shop page isn't equal to the" +
                     "price of the same in the checkout table!!!");
-                decimal subTot = pageFactory.shopPage.GetSubTotalOfProductInCheckoutTable(productPriceDetail.Key);
+                decimal subTot = pageFactory.cartPage.GetSubTotalOfProductInCheckoutTable(productPriceDetail.Key);
                 int qty = ProductDetails[productPriceDetail.Key];
                 Assert.That((pdtPriceInTable * qty).Equals(subTot), $"The subtotal of the product/item {productPriceDetail.Key} is incorrect !!!");
                 TotalOfSubTotal = TotalOfSubTotal + subTot;
             }
 
-            ////verify the total of all products in the cart.
-            //int productTot = pageFactory.shopPage.GetProductTotal();
-            //Assert.That(productTot.Equals(TotalOfSubTotal), "The total of all the products in the cart doesn't match the total of all sub-totals!!!");
+            //verify the total of all products in the cart.
+            decimal productTot = pageFactory.cartPage.GetProductTotal();
+            Assert.That(productTot.Equals(TotalOfSubTotal), "The total of all the products in the cart doesn't match the total of all sub-totals!!!");
         }
 
     }

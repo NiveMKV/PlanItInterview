@@ -30,5 +30,10 @@
     <Folder Include="Pages\" />
     <Folder Include="Resources\" />
     <Folder Include="Utilities\" />
+    <Folder Include=".github\" />
+    <Folder Include=".github\workflows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".github\workflows\build-and-test.yml" />
   </ItemGroup>
 </Project>

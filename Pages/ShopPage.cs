@@ -32,7 +32,7 @@ namespace PlanItTestProject.Pages
             IWebElement product = Driver.FindElement(By.XPath(Product.Replace("PRODUCT_NAME", productName)));
             while (noOfItems != 0)
             {
-                product.FindElement(By.XPath(BuyBtn));
+                product.FindElement(By.XPath(BuyBtn)).Click();
                 noOfItems--;
             }
             
@@ -44,45 +44,6 @@ namespace PlanItTestProject.Pages
             string priceText = product.FindElement(By.XPath(ProductPrice)).Text;
             return decimal.Parse(priceText.Replace("$", ""));
         }
-
-        public int GetColumnIndex(string columnName)
-        {
-            IList<IWebElement> columnHdrs = Driver.FindElements(By.XPath(ColumnHeaders));
-            int indexCount = 0;
-
-            foreach(IWebElement columnHdr in columnHdrs)
-            {
-                indexCount++;
-                if (columnHdr.Text == columnName) return indexCount;
-            }
-            return indexCount;
-        }
-
-        public decimal GetPriceOfProductInCheckoutTable(string productName)
-        {
-            int priceColIndex = GetColumnIndex("Price");
-            IWebElement itemInTheTable = Driver.FindElement(By.XPath(ItemInTable.Replace("PRODUCT_NAME", productName)));
-            string priceInString = itemInTheTable.FindElement(By.XPath($"./parent::tr//td[{priceColIndex}]")).Text;
-            //return Int32.Parse(priceInString.Substring(1));
-            return decimal.Parse(priceInString.Replace("$", ""));
-        }
-
-        public decimal GetSubTotalOfProductInCheckoutTable(string productName)
-        {
-            int priceColIndex = GetColumnIndex("Subtotal");
-            IWebElement itemInTheTable = Driver.FindElement(By.XPath(ItemInTable.Replace("PRODUCT_NAME", productName)));
-            string priceInString = itemInTheTable.FindElement(By.XPath($"./parent::tr//td[{priceColIndex}]")).Text;
-            //return Int32.Parse(priceInString.Substring(1));
-            return decimal.Parse(priceInString.Replace("$", ""));
-        }
-
-        public decimal GetProductTotal()
-        {
-            string productsTotInString = Driver.FindElement(By.XPath(ProductsTotal)).Text;
-            //return Int32.Parse(productsTotInString.Replace("Total: ", ""));
-            return decimal.Parse(productsTotInString.Replace("$", ""));
-        }
-
 
     }
 }

@@ -32,6 +32,7 @@ namespace PlanItTestProject.Pages
         public HomePage homePage => new HomePage(Driver);
         public ContactPage contactPage => new ContactPage(Driver);
         public ShopPage shopPage => new ShopPage(Driver);
+        public CartPage cartPage => new CartPage(Driver);
 
 
         #region Browser Page Methods
