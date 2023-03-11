@@ -1,5 +1,6 @@
 ﻿using System;
 using PlanItTestProject.Pages;
+using NUnit.Framework;
 
 namespace PlanItTestProject.Tests
 {
