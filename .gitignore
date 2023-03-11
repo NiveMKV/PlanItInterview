@@ -1,0 +1,14 @@
+﻿# Mac desktop service store files
+.DS_Store
+
+
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+.vs/
+
+
+Usings.cs
