@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using PlanItTestProject.Pages;
+using NUnit.Framework;
 
 namespace PlanItTestProject.Tests
 {
